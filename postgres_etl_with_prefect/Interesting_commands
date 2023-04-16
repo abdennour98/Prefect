@@ -1,0 +1,23 @@
+>>>create and activate an env
+
+   conda create -n zoomcamp python=3.9 
+   conda activate zoomcamp
+
+<<<<Data url>>>>>>>
+URL="https://d37ci6vzurychx.cloudfront.net/trip-data/yellow_tripdata_2021-01.parquet"
+
+>>>>>>>>>>exectute python scrip with args>>>>>>
+python ingest_data.py \
+  --user=root \
+  --password=root \
+  --host=localhost \
+  --port=5432 \
+  --db=ny_taxi \
+  --table_name=yellow_taxi_trips \
+  --url=${URL}
+
+
+>>>>>>>>run pipeline with prefect>>>>>>>>>>>
+prefect orion start
+
+

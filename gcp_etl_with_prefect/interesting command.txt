@@ -1,0 +1,20 @@
+-----create conda env
+       conda create -n zoomcamp-etl python=3.9 
+   conda activate zoomcamp-etl
+
+
+-----run prefect UI
+    >prefect orion start
+
+------prefect_project_deployment:
+  >prefect deployment build ./parameterized_flow.py:etl_parent_flow -n "Parameterized ETL"
+  >prefect deployment apply etl_parent_flow-deployment.yaml
+  
+
+-----build image
+docker image build -t elmalki1998/prefect:zoomcamp .
+----push image
+>docker login
+>docker image push elmalki1998/prefect:zoomcamp
+
+  
